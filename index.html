@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <section>
+        <ul>
+            <li class="pad" id="97">Kick</li>
+            <li class="pad" id="115">Snare</li>
+            <li class="pad" id="100">Tom</li>
+            <li class="pad" id="102">Cymbal</li>
+        </ul>
+
+        <audio onclick="onclk" id="Kick" src="./sounds/606-kick2.wav"></audio>
+        <audio id="Snare" src="./sounds/606-snare2.wav"></audio>
+        <audio id="Tom" src="./sounds/606-tom3.wav"></audio>
+        <audio id="Cymbal" src="./sounds/606-cymbal6.wav"></audio>
+    </section>
+    <script>
+        function playsound (e) {
+            padbox = document.getElementById(e.charCode);
+            instrument = document.getElementById(padbox.innerText)
+            audio = new Audio(instrument.currentSrc);
+            audio.currentTime = 0;   
+            audio.play();
+            padbox.className='active';
+             
+        }
+
+        function onclk(e){
+            padbox = document.getElementById(e.target.id);
+            instrument = document.getElementById(padbox.innerText)
+            audio = new Audio(instrument.currentSrc);
+            audio.currentTime = 0;   
+            audio.play();
+            padbox.className='active';
+        }
+
+        window.addEventListener("keyup", function(e){
+                padbox.className='pad'; 
+        });
+
+        window.addEventListener("click", onclk)
+       
+        window.addEventListener("mouseup", function(e){
+            padbox.className='pad'; 
+        })
+
+        window.addEventListener("keypress", playsound)
+
+        
+    </script>
+</body>
+
+</html>
